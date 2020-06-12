@@ -1,0 +1,33 @@
+<launch>
+  <arg name="navigate_with_map" default="true"/>
+  <!--- Run AMCL -->
+  <include file="$(find mobile_base_navigation)/launch/start_localization.launch" if="$(arg navigate_with_map)"/>
+  <remap from="cmd_vel" to="/Mobile_Base/diff_drive_controller/cmd_vel" />
+
+  <!-- Run move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <!-- load move base nodee params -->
+    <rosparam file="$(find mobile_base_navigation)/config/move_base_params.yaml" command="load" />
+    <!-- load common params for costmaps -->
+    <rosparam file="$(find mobile_base_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find mobile_base_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <!-- load local costmap specific params -->
+    <rosparam file="$(find mobile_base_navigation)/config/local_costmap_params.yaml" command="load" />
+    <!-- load global costmap specific params -->
+    <rosparam file="$(find mobile_base_navigation)/config/global_costmap_params_map.yaml" command="load" if="$(arg navigate_with_map)" />
+    <rosparam file="$(find mobile_base_navigation)/config/global_costmap_params_nomap.yaml" command="load" unless="$(arg navigate_with_map)" />    
+    <!-- load local planner params -->
+    <!-- <rosparam file="$(find mobile_base_navigation)/config/teb_local_planner_omni_params.yaml" command="load" /> -->
+    <rosparam file="$(find mobile_base_navigation)/config/dwa_local_planner.yaml" command="load"/>
+    <!-- load global planner params -->
+    <rosparam file="$(find mobile_base_navigation)/config/global_planner_params.yaml" command="load" />
+
+    <!-- select the planners to use -->
+    <param name="base_global_planner" value="navfn/NavfnROS" />
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>  
+    <remap from="/Mobile_Base/move_base_simple/goal" to="/move_base_simple/goal" />
+  </node>
+    <!-- We start the navigation rviz config-->
+    <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find mobile_base_navigation)/rviz/navigation.rviz" if="$(arg navigate_with_map)" /> -->
+</launch>
