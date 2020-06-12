@@ -1,0 +1,30 @@
+<launch>
+
+<!-- Load joint controller configuration from YAML file to parameter server -->
+
+<rosparam file="$(find mobile_base_description)/config/joint_states.yaml" command="load"/>
+
+<rosparam file="$(find mobile_base_description)/config/diff_drive.yaml" command="load"/>
+
+
+<!-- load the controllers -->
+<node name="robot_arm_controller_spawner" pkg="controller_manager" type="spawner"
+  respawn="true" output="screen" 
+   args="/Mobile_Base/joint_state_controller
+         /Mobile_Base/diff_drive_controller
+        --shutdown-timeout 3"/>
+
+<!-- <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+  <param name="default_topic" value="/Mobile_Base/diff_drive_controller/cmd_vel"/> 
+</node> -->
+
+<!-- Launch keyboard control -->
+<node name="keyboard_teleop" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py">
+  <remap from="/cmd_vel" to="/Mobile_Base/diff_drive_controller/cmd_vel"/>
+</node>
+
+</launch>
+
+ 
+
+
