@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /LaserScan1
       Splitter Ratio: 0.5
     Tree Height: 565
   - Class: rviz/Selection
@@ -139,7 +140,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.00999999978
+      Size (m): 0.100000001
       Style: Flat Squares
       Topic: /scan
       Unreliable: false
@@ -188,18 +189,18 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0455611497
-        Y: 0.0338416472
-        Z: 0.00828694087
+        X: -0.0614165664
+        Y: -0.421487749
+        Z: 0.578312874
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.480398118
+      Pitch: 1.14039779
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.675398231
+      Yaw: 0.670398235
     Saved: ~
 Window Geometry:
   Displays:

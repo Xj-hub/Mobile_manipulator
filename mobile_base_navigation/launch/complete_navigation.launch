@@ -1,10 +1,10 @@
 <launch>
-    <arg name="spots_file_name" default="saved_spots1"/>
+    <!-- <arg name="spots_file_name" default="saved_spots1"/> -->
     <!--- Set navigation with or without map -->
     <arg name="navigate_with_map" default="true"/>
 
     <!-- We load the Spots paramatere locations-->
-    <rosparam file="$(find mobile_base_navigation)/spots/$(arg spots_file_name).yaml" command="load" />
+    <!-- <rosparam file="$(find mobile_base_navigation)/spots/$(arg spots_file_name).yaml" command="load" /> -->
 
     <!-- We start the navigation stack-->
     <include file="$(find mobile_base_navigation)/launch/start_navigation.launch">
