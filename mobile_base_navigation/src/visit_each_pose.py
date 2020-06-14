@@ -13,6 +13,7 @@ import os
 import rosparam
 import pandas as pd
 import rospkg
+import sys
 
 
 class Visit_each_pose(object):
@@ -88,5 +89,9 @@ class Visit_each_pose(object):
 
 if __name__ == "__main__":
     rospy.init_node('send_coordinates_node', log_level=rospy.INFO)
-    Visitor = Visit_each_pose("reorg_saved_spots2.csv")
-    rospy.spin() # mantain the service open.
+    if len(sys.argv) < 2:
+        print("usage: visit_each_pose.py spots_file_name")
+    else:
+        spots_file_name = str(sys.argv[1])+".csv"
+        Visitor = Visit_each_pose(spots_file_name)
+        rospy.spin() # mantain the service open.
