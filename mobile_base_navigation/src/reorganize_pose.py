@@ -13,7 +13,7 @@ def create_init_dict(filename):
     data = pd.read_csv(filename,names=['index','lat','lon'])
     data_dict = {}
     for i in range(len(data)):
-        data_dict[i] = (data.iloc[i]['lon'],data.iloc[i]['lat'])
+        data_dict[i] = (data.iloc[i]['lat'],data.iloc[i]['lon'])
     return data_dict
  
  
@@ -106,7 +106,7 @@ def main(spots_file_name, plot = False):
     start = time.time()
     # size=10
     p_num=100#how many individuals in a group 
-    gen=2000#how many generations
+    gen=4000#how many generations
     pm=0.1#mutate rate
     # coordinate_dict_1=coordinate_init(size)
     coordinate_dict=create_init_dict(csv_path)
@@ -183,7 +183,7 @@ def main(spots_file_name, plot = False):
     with open(save_csv_path, "w") as csvfile:
         writer = csv.writer(csvfile)
         for node_index in best_path:
-            writer.writerow([node_index, coordinate_dict[node_index][0], coordinate_dict[node_index][0]])
+            writer.writerow([node_index, coordinate_dict[node_index][0], coordinate_dict[node_index][1]])
     if plot:
         plt.figure(1)
         plt.subplot(211)

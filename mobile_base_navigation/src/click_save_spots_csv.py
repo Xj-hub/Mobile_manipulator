@@ -6,6 +6,7 @@ from mobile_base_navigation.srv import GoalPose, GoalPoseResponse, GoalPoseReque
 from geometry_msgs.msg import PointStamped
 import rospkg
 import csv
+import os
 class PoseRetriever(object):
     def __init__(self, spots_file_name="spots_saved.csv"):
         rospy.Subscriber("/clicked_point", PointStamped, self.click_pose_callback)
@@ -17,7 +18,12 @@ class PoseRetriever(object):
         spots_folder_path = os.path.join(rospack.get_path('mobile_base_navigation'), "spots")
 
         self.spot_file_path = os.path.join(spots_folder_path, spots_file_name)
-
+        if os.path.exists(self.spot_file_path):
+            try:
+                os.remove(self.spot_file_path)
+            except:
+                rospy.loginfo("File Not Found "+str(self.spot_file_path) )
+            #Init File for Spot saving
         rospy.loginfo("PoseRetriever READY...")
         self.csvfile = open(self.spot_file_path, "a")
         self.index = 0
