@@ -10,7 +10,10 @@ local_costmap:
 
   # padding is 0.1 by default, making difficult to pass through narrow places
   footprint_padding: 0.0
-
+  obstacles_laser:
+      observation_sources: laser
+      laser: {data_type: LaserScan, clearing: true, marking: true, topic: scan, inf_is_valid: true}
   plugins:
-  - {name: obstacle_layer,            type: "costmap_2d::ObstacleLayer"}
+  - {name: obstacles_laser,            type: "costmap_2d::ObstacleLayer"}
   - {name: inflation_layer,           type: "costmap_2d::InflationLayer"}
+  
