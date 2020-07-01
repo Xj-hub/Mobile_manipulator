@@ -2,7 +2,7 @@
   <arg name="navigate_with_map" default="true"/>
   <!--- Run AMCL -->
   <include file="$(find mobile_base_navigation)/launch/start_localization.launch" if="$(arg navigate_with_map)"/>
-  <remap from="cmd_vel" to="/Mobile_Base/diff_drive_controller/cmd_vel" />
+  <remap from="cmd_vel" to="/Mobile_Base/omni_drive_controller/cmd_vel" />
 
   <!-- Run move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">

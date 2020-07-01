@@ -10,7 +10,7 @@
    <!--Run Amcl node -->
    <node pkg="amcl" type="amcl" name="amcl" output="screen">
         <remap from ="scan" to="/scan"/>
-        <remap from ="cmd_vel" to="/Mobile_Base/diff_drive_controller/cmd_vel"/>
+        <remap from ="cmd_vel" to="/Mobile_Base/omni_drive_controller/cmd_vel"/>
         <remap from ="amcl_pose" to="/Mobile_Base/amcl_pose"/>
 
         <param name="global_frame_id" value="map"/>
@@ -41,7 +41,7 @@
         <param name="update_min_d" value="0.2"/>
         <param name="update_min_a" value="0.5"/>
         <param name="odom_frame_id" value="odom"/>
-        <param name="base_frame_id" value="chassis"/>
+        <param name="base_frame_id" value="summit_base_footprint"/>
         <param name="resample_interval" value="1"/>
         <param name="transform_tolerance" value="0.1"/>
         <param name="recovery_alpha_slow" value="0.0"/>
