@@ -8,9 +8,6 @@ publish_frequency: 1.0
 inflation_layer:
   inflation_radius: 0.6
 
-obstacle_layer:
-  observation_sources: merged_laser
-  merged_laser: {sensor_frame: robot_front_laser_base_link, data_type: LaserScan, topic: /robot/merged_laser/scan, marking: true, clearing: true}
 
 static:
   map_topic: /map
