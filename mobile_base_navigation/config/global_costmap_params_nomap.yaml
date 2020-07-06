@@ -1,6 +1,6 @@
 global_costmap:
   global_frame: odom
-  robot_base_frame: chassis
+  robot_base_frame: summit_base_footprint
   static_map: false
   rolling_window: true
   width: 50
