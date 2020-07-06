@@ -1,8 +1,6 @@
-# Mobile base test
-## mobile_base_description
-`mobile_base_description` contains a description file for a test mobile base, which is controlled by differencial velocity controller.<br> 
-Gazebo simulation can be launched by using the following command.<br> 
-```roslaunch mobile_base_description spawn_mobile_base.launch ```
+# summit base test
+## mobile_base_gazebo
+```roslaunch mobile_base_gazebo spawn_summit_omni.launch``` use this line to launch the summit robot<br>
 ## mobile_base_navigation
 `mobile_base_navigation` contains all the files for the robot to perform a multiple 
 destination navigation.<br>
