@@ -3,7 +3,7 @@
 
   <xacro:macro name="summit_base">
 
-    <xacro:include filename="$(find summit_description)/urdf/base/summit_base.gazebo.xacro" />
+    <xacro:include filename="$(find summit_description)/urdf/base/summit_base_omni.gazebo.xacro" />
 	  <!-- Robot mechanical and motor parameters -->
 	  <xacro:property name="PI" value="3.1415926535897931"/>
 	  <xacro:property name="wheel_width" value="0.175" />
@@ -66,8 +66,8 @@
  </link>
 
 <joint name="hokuyo_joint" type="fixed">
-  <origin xyz="0 0 0.4" rpy="0 0 0"/>
-  <parent link="summit_base_link"/>
+  <origin xyz="0 0 0.45" rpy="0 0 0"/>
+  <parent link="summit_base_footprint"/>
   <child link="hokuyo_sensor"/>
 </joint>
 
