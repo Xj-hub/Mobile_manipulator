@@ -71,7 +71,7 @@
   <child link="hokuyo_sensor"/>
 </joint>
 
-<gazebo reference="hokuyo_sensor">
+<!-- <gazebo reference="hokuyo_sensor">
   <material>Gazebo/Blue</material>
   <turnGravityOff>false</turnGravityOff>
   <sensor type="ray" name="chassis_hokuyo_sensor">
@@ -99,7 +99,8 @@
         <frameName>hokuyo_sensor</frameName>
        </plugin>
       </sensor>
-     </gazebo>  
+  </gazebo>   -->
+
   </xacro:macro>
 
 </robot>

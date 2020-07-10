@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
+    <arg name="use_velodyne" default="true"/>
+    <group if="$(arg use_velodyne)">
+        <include file="$(find pc2laser)/launch/pc2laser.launch"></include>
+    </group>
+    
     <include file="$(find mobile_base_gazebo)/launch/spawn_gazebo.launch">
         <arg name="x" value="0.0" />
         <arg name="y" value="0.0" />

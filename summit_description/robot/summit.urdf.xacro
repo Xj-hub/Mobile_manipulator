@@ -33,7 +33,7 @@
         <xacro:omni_steering/>
 		<xacro:lidar parent="summit_base_footprint"/>
    </xacro:macro>
-
+	
    <xacro:robot/>
 
 
