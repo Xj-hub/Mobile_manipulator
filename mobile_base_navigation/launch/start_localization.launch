@@ -1,10 +1,9 @@
 <launch>
-
-   <arg name="map_file" default="$(find mobile_base_navigation)/maps/room2.yaml"/>
+   <arg name="map_file_name" default= "small_room"/>
 
    <!-- Run the map server -->
    <include file="$(find mobile_base_navigation)/launch/map_provider.launch">
-        <arg name="map_file" default="$(arg map_file)"/>
+        <arg name="map_file_name" default="$(arg map_file_name)"/>
    </include>
 
    <!--Run Amcl node -->
