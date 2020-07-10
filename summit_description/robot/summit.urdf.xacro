@@ -5,7 +5,7 @@
 	<!-- Import summit XL wheels -->
 	<xacro:include filename="$(find summit_description)/urdf/wheels/omni_wheel.urdf.xacro" />
 	<xacro:include filename="$(find summit_description)/urdf/base/summit_base.urdf.xacro" />
-
+	<xacro:include filename="$(find summit_description)/urdf/sensor/velodyne.urdf.xacro" />
 	<!-- Wheel parameters -->
 	<xacro:property name="wheel_offset_x" value="0.2225" />    <!-- x,y,z in translation from base_link to the center of the wheel -->
 	<xacro:property name="wheel_offset_y" value="0.2045" />
@@ -29,9 +29,9 @@
 		<xacro:omni_wheel prefix="summit_back_right" parent="summit_base_link" reflect="false">
 			<origin xyz="-${wheel_offset_x} -${wheel_offset_y} ${wheel_offset_z}" rpy="0 0 0"/>
 		</xacro:omni_wheel>
-
+		
         <xacro:omni_steering/>
-
+		<xacro:lidar parent="summit_base_footprint"/>
    </xacro:macro>
 
    <xacro:robot/>
